@@ -1,15 +1,11 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# Environment variables
+.env
 
-# Test binary, built with `go test -c`
-*.test
+# IDE directory
+.idea
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# Pair feeds
+testdata/*.csv
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Databases
+user_data/db/*.db
