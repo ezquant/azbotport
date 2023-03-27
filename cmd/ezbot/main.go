@@ -3,18 +3,22 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"os"
+
+	"gopkg.in/yaml.v3"
+
 	"github.com/ezquant/ezbot/internal/backtesting"
 	"github.com/ezquant/ezbot/internal/exchanges/binance"
 	"github.com/ezquant/ezbot/internal/exchanges/paperwallet"
-	"log"
-	"os"
+	"github.com/ezquant/ezbot/internal/models"
 )
 
 func main() {
 	tradeCmd := flag.NewFlagSet("trade", flag.ExitOnError)
 	dryRun := tradeCmd.Bool("dry-run", false, "Trade in dry-run mode")
 	tradeConfigPath := tradeCmd.String("config", "user_data/config.yml", "Configuration file path")
-    databasePath := tradeCmd.String("database", "user_data/db", "Database path")
+	databasePath := tradeCmd.String("database", "user_data/db", "Database path")
 
 	testCmd := flag.NewFlagSet("test", flag.ExitOnError)
 	testConfigPath := testCmd.String("config", "user_data/config.yml", "Configuration file path")
@@ -50,4 +54,16 @@ func main() {
 		fmt.Println("expected 'trade' or 'test' subcommands")
 		os.Exit(1)
 	}
+}
+
+func readConfig(path *string) (config *models.Config, err error) {
+	data, err := os.ReadFile(*path)
+	if err != nil {
+		return nil, err
+	}
+
+	config = &models.Config{}
+	err = yaml.Unmarshal(data, config)
+
+	return
 }
