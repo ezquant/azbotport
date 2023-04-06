@@ -1,0 +1,3 @@
+[submodule "ninjabot-ctp"]
+	path = ninjabot-ctp
+	url = git@github.com:ezquant/ninjabot-ctp.git
