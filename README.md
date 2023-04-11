@@ -1,3 +1,3 @@
 # ezbot
 
-A trading bot supporting cryptocurrency and CTP, based on golang and docker.
+A trading robot that plans to support stocks, futures and cryptocurrencies, developed by golang, supports docker deployment.
