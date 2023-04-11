@@ -2,16 +2,17 @@ package strategies
 
 import (
 	"fmt"
+	"math"
+	"strconv"
+	"sync/atomic"
+
+	"github.com/ezquant/azbot/internal/localkv"
+	"github.com/ezquant/azbot/internal/models"
 	"github.com/rodrigo-brito/ninjabot"
 	"github.com/rodrigo-brito/ninjabot/model"
 	"github.com/rodrigo-brito/ninjabot/service"
 	"github.com/rodrigo-brito/ninjabot/strategy"
-	"github.com/ezquant/ezbot/internal/localkv"
-	"github.com/ezquant/ezbot/internal/models"
 	log "github.com/sirupsen/logrus"
-	"math"
-	"strconv"
-	"sync/atomic"
 )
 
 type DCAOnSteroids struct {

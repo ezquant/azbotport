@@ -8,10 +8,10 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/ezquant/ezbot/internal/backtesting"
-	"github.com/ezquant/ezbot/internal/exchanges/binance"
-	"github.com/ezquant/ezbot/internal/exchanges/paperwallet"
-	"github.com/ezquant/ezbot/internal/models"
+	"github.com/ezquant/azbot/internal/backtesting"
+	"github.com/ezquant/azbot/internal/exchanges/binance"
+	"github.com/ezquant/azbot/internal/exchanges/paperwallet"
+	"github.com/ezquant/azbot/internal/models"
 )
 
 func main() {

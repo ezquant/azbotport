@@ -1,11 +1,11 @@
 version: '3'
 services:
-  ezbot:
-    image: ezbot
+  azbot:
+    image: azbot
     restart: unless-stopped
-    container_name: ezbot
+    container_name: azbot
     volumes:
-      - ./user_data:/usr/share/ezbot
+      - ./user_data:/usr/share/azbot
     environment:
       - BINANCE_API_KEY=${BINANCE_API_KEY}
       - BINANCE_SECRET_KEY=${BINANCE_SECRET_KEY}
@@ -13,8 +13,8 @@ services:
       - TELEGRAM_USER=${TELEGRAM_USER}
     command: >
       trade
-      --config /usr/share/ezbot/config.yml
-      --database /usr/share/ezbot/db
+      --config /usr/share/azbot/config.yml
+      --database /usr/share/azbot/db
     logging:
       driver: "json-file"
       options:

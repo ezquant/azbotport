@@ -3,14 +3,14 @@ package backtesting
 import (
 	"context"
 	"fmt"
-	"github.com/ezquant/ezbot/internal/localkv"
-	"github.com/ezquant/ezbot/internal/models"
+	"github.com/ezquant/azbot/internal/localkv"
+	"github.com/ezquant/azbot/internal/models"
 
+	"github.com/ezquant/azbot/internal/strategies"
 	"github.com/rodrigo-brito/ninjabot"
 	"github.com/rodrigo-brito/ninjabot/exchange"
 	"github.com/rodrigo-brito/ninjabot/plot"
 	"github.com/rodrigo-brito/ninjabot/storage"
-	"github.com/ezquant/ezbot/internal/strategies"
 
 	log "github.com/sirupsen/logrus"
 )

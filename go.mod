@@ -1,4 +1,4 @@
-module github.com/ezquant/ezbot
+module github.com/ezquant/azbot
 
 go 1.17
 

@@ -1,20 +1,20 @@
 FROM golang:1.19.3 as builder
 
-WORKDIR /go/src/github.com/ezquant/ezbot
+WORKDIR /go/src/github.com/ezquant/azbot
 
 COPY go.mod go.sum ./
 COPY cmd cmd
 COPY internal internal
 
-RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o /bin/ezbot github.com/ezquant/ezbot/cmd/ezbot
-RUN mkdir -p /usr/share/ezbot
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o /bin/azbot github.com/ezquant/azbot/cmd/azbot
+RUN mkdir -p /usr/share/azbot
 
 FROM scratch
 
 WORKDIR /app
 
-COPY --from=builder /bin/ezbot /bin/ezbot
-COPY --from=builder /usr/share/ezbot /usr/share/ezbot
+COPY --from=builder /bin/azbot /bin/azbot
+COPY --from=builder /usr/share/azbot /usr/share/azbot
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-ENTRYPOINT ["ezbot"]
+ENTRYPOINT ["azbot"]

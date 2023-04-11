@@ -2,16 +2,17 @@ package binance
 
 import (
 	"context"
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/storage"
-	"github.com/ezquant/ezbot/internal/localkv"
-	"github.com/ezquant/ezbot/internal/models"
-	"github.com/ezquant/ezbot/internal/strategies"
 	"log"
 	"os"
 	"path"
 	"strconv"
+
+	"github.com/ezquant/azbot/internal/localkv"
+	"github.com/ezquant/azbot/internal/models"
+	"github.com/ezquant/azbot/internal/strategies"
+	"github.com/rodrigo-brito/ninjabot"
+	"github.com/rodrigo-brito/ninjabot/exchange"
+	"github.com/rodrigo-brito/ninjabot/storage"
 )
 
 func Run(config *models.Config, databasePath *string) {

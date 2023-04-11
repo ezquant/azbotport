@@ -1,9 +1,10 @@
 package strategies
 
 import (
-	"github.com/rodrigo-brito/ninjabot/strategy"
-	"github.com/ezquant/ezbot/internal/models"
 	"math"
+
+	"github.com/ezquant/azbot/internal/models"
+	"github.com/rodrigo-brito/ninjabot/strategy"
 
 	"github.com/rodrigo-brito/ninjabot"
 	"github.com/rodrigo-brito/ninjabot/model"
