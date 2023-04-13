@@ -7,12 +7,12 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/ezquant/azbot/internal/localkv"
-	"github.com/ezquant/azbot/internal/models"
-	"github.com/ezquant/azbot/internal/strategies"
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/storage"
+	"github.com/ezquant/azbot/azbot"
+	"github.com/ezquant/azbot/azbot/exchange"
+	"github.com/ezquant/azbot/azbot/storage"
+	"github.com/ezquant/azbotport/internal/localkv"
+	"github.com/ezquant/azbotport/internal/models"
+	"github.com/ezquant/azbotport/internal/strategies"
 )
 
 func Run(config *models.Config, databasePath *string) {
@@ -29,9 +29,9 @@ func Run(config *models.Config, databasePath *string) {
 		pairs = append(pairs, pair)
 	}
 
-	settings := ninjabot.Settings{
+	settings := azbot.Settings{
 		Pairs: pairs,
-		Telegram: ninjabot.TelegramSettings{
+		Telegram: azbot.TelegramSettings{
 			Enabled: true,
 			Token:   telegramToken,
 			Users:   []int{telegramUser},
@@ -65,12 +65,12 @@ func Run(config *models.Config, databasePath *string) {
 			log.Fatal(err)
 		}
 
-		bot, err := ninjabot.NewBot(ctx, settings, binance, strat, ninjabot.WithStorage(storage))
+		bot, err := azbot.NewBot(ctx, settings, binance, strat, azbot.WithStorage(storage))
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		// Run ninjabot
+		// Run azbot
 		err = bot.Run(ctx)
 		if err != nil {
 			log.Fatalln(err)

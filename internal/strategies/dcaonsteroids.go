@@ -6,12 +6,12 @@ import (
 	"strconv"
 	"sync/atomic"
 
-	"github.com/ezquant/azbot/internal/localkv"
-	"github.com/ezquant/azbot/internal/models"
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/service"
-	"github.com/rodrigo-brito/ninjabot/strategy"
+	"github.com/ezquant/azbot/azbot"
+	"github.com/ezquant/azbot/azbot/model"
+	"github.com/ezquant/azbot/azbot/service"
+	"github.com/ezquant/azbot/azbot/strategy"
+	"github.com/ezquant/azbotport/internal/localkv"
+	"github.com/ezquant/azbotport/internal/models"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -123,7 +123,7 @@ func (d DCAOnSteroids) OnCandle(df *model.Dataframe, broker service.Broker) {
 	}
 
 	// Buy more coins
-	_, err = broker.CreateOrderMarketQuote(ninjabot.SideTypeBuy, df.Pair, acc)
+	_, err = broker.CreateOrderMarketQuote(azbot.SideTypeBuy, df.Pair, acc)
 	if err != nil {
 		log.Error(err)
 		return

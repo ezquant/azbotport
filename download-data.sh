@@ -10,5 +10,5 @@ start=2022-04-14
 end=2022-11-10
 
 for pair in ${pairs[@]}; do
-  ninjabot download --pair ${pair}BUSD --timeframe $timeframe --output testdata/${pair}BUSD-${timeframe}.csv --start $start --end $end #--days $days
+  azbot download --pair ${pair}BUSD --timeframe $timeframe --output testdata/${pair}BUSD-${timeframe}.csv --start $start --end $end #--days $days
 done

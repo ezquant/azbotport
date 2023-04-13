@@ -3,14 +3,15 @@ package backtesting
 import (
 	"context"
 	"fmt"
-	"github.com/ezquant/azbot/internal/localkv"
-	"github.com/ezquant/azbot/internal/models"
 
-	"github.com/ezquant/azbot/internal/strategies"
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/plot"
-	"github.com/rodrigo-brito/ninjabot/storage"
+	"github.com/ezquant/azbotport/internal/localkv"
+	"github.com/ezquant/azbotport/internal/models"
+	"github.com/ezquant/azbotport/internal/strategies"
+
+	"github.com/ezquant/azbot/azbot"
+	"github.com/ezquant/azbot/azbot/exchange"
+	"github.com/ezquant/azbot/azbot/plot"
+	"github.com/ezquant/azbot/azbot/storage"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -28,7 +29,7 @@ func Run(config *models.Config, databasePath *string) {
 		pairs = append(pairs, pair)
 	}
 
-	settings := ninjabot.Settings{
+	settings := azbot.Settings{
 		Pairs: pairs,
 	}
 
@@ -75,16 +76,16 @@ func Run(config *models.Config, databasePath *string) {
 		log.Fatal(err)
 	}
 
-	bot, err := ninjabot.NewBot(
+	bot, err := azbot.NewBot(
 		ctx,
 		settings,
 		wallet,
 		strategy,
-		ninjabot.WithBacktest(wallet),
-		ninjabot.WithStorage(storage),
-		ninjabot.WithCandleSubscription(chart),
-		ninjabot.WithOrderSubscription(chart),
-		ninjabot.WithLogLevel(log.WarnLevel),
+		azbot.WithBacktest(wallet),
+		azbot.WithStorage(storage),
+		azbot.WithCandleSubscription(chart),
+		azbot.WithOrderSubscription(chart),
+		azbot.WithLogLevel(log.WarnLevel),
 	)
 	if err != nil {
 		log.Fatal(err)

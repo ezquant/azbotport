@@ -1,10 +1,10 @@
-module github.com/ezquant/azbot
+module github.com/ezquant/azbotport
 
 go 1.17
 
 require (
+	github.com/ezquant/azbot v0.1.0
 	github.com/go-resty/resty/v2 v2.7.0
-	github.com/rodrigo-brito/ninjabot v0.2.4
 	github.com/sirupsen/logrus v1.9.0
 	github.com/tidwall/buntdb v1.2.10
 	gopkg.in/yaml.v3 v3.0.1
