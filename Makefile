@@ -17,12 +17,11 @@ all: azbot
 
 azbot:
 	@echo "build azbot"
-	@#go build -o ${BIN_azbot}.${ARCH} ${ENTRY_azbot}
-ifeq ($(ARCH), x86_64)
+ifeq ($(ARCH), aarch64)
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ${BIN_azbot}.x86_64 ${ENTRY_azbot}
 	@#CGO_ENABLED=0 GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc CGO_LDFLAGS="-L ./opt/lib/aarch64" go build -o ${BIN_azbot}.aarch64 ${ENTRY_azbot}
 else
-	@echo "Please run in x86_64 linux OS."
+	@go build -o ${BIN_azbot}.${ARCH} ${ENTRY_azbot}
 endif
 
 test:
