@@ -1,9 +1,12 @@
 package strategies
 
 import (
+	//"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
+	//"net/http"
+
 	"github.com/go-resty/resty/v2"
 )
 
@@ -28,7 +31,15 @@ func dayIn(day int, days []int) bool {
 
 // Gets the price drop since the ATH
 func getPriceDrop(slug string) (float64, error) {
-	resp, err := resty.New().R().
+	// Create a new Resty client
+	client := resty.New()
+
+	// disable certificate verification
+	//client.SetTransport(&http.Transport{
+	//	TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	//})
+
+	resp, err := client.R().
 		Get(fmt.Sprintf("https://api.coingecko.com/api/v3/coins/%s?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false", slug))
 	if err != nil {
 		return 0.0, err
